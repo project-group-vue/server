@@ -1,11 +1,6 @@
 const User = require('../models/user')
-const {
-    comparePassword
-} = require('../helpers/bcryptjs')
-const {
-    tokenGenerate
-} = require('../helpers/jwt')
-
+const { comparePassword} = require('../helpers/bcryptjs')
+const {tokenGenerate} = require('../helpers/jwt')
 
 class UserController {
     static register(req, res, next) {
@@ -20,7 +15,6 @@ class UserController {
                 password
             })
             .then(user => {
-
                 res.status(201).json(user)
             })
             .catch(next)
