@@ -2,9 +2,9 @@ const User = require("../models/user");
 const jwt = require("../helpers/jwt");
 
 function authenticate(req, res, next) {
-    console.log('auten')
     try {
         const decoded = jwt.verifyToken(req.headers.token);
+        console.log(decoded)
         User.findOne({
                 _id: decoded.id
             })
@@ -15,14 +15,14 @@ function authenticate(req, res, next) {
                 } else {
                     next({
                         status: 404,
-                        messages: 'error'
+                        message: 'error'
                     })
                 }
             });
     } catch (err) {
         err = {
             status: 403,
-            messages: `You must log in first.`
+            message: `You must log in first.`
         }
         next(err);
     }

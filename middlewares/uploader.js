@@ -2,17 +2,17 @@
 require('dotenv').config()
 const { Storage } = require('@google-cloud/storage')
 const CLOUD_BUCKET = process.env.GCS_BUCKET
-console.log(CLOUD_BUCKET);
-console.log('object');
 const storage = new Storage({
  projectId: process.env.GCLOUD_PROJECT,
  keyFilename: process.env.KEYFILE_PATH
 })
 const bucket = storage.bucket(CLOUD_BUCKET)
 const getPublicUrl = (filename) => {
- return `https://storage.cloud.google.com/${CLOUD_BUCKET}/${filename}`
+//  return `https://storage.cloud.google.com/${CLOUD_BUCKET}/${filename}`
+ return `https://storage.googleapis.com/${CLOUD_BUCKET}/${filename}`
 }
 const sendUploadToGCS = (req, res, next) => {
+  console.log(req.fil,'ini di uploader');
  if (!req.file) {
    return next()
  }
