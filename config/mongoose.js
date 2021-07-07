@@ -1,5 +1,6 @@
 const mongoose = require('mongoose')
-const MONGO_CONNECT = process.env.MONGO_CONNECT
+// const MONGO_CONNECT = process.env.MONGO_CONNECT
+const MONGO_CONNECT = process.env.MONGO_ATLAS
 
 mongoose.connect(MONGO_CONNECT, {
         useCreateIndex: true,
